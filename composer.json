@@ -1,0 +1,15 @@
+{
+    "name": "cweiske/nextcloud_sql_addressbook",
+    "description": "Roundcube plugin that allows access to NextCloud address books.",
+    "type": "roundcube-plugin",
+    "license": "AGPL-3.0+",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://plugins.roundcube.net"
+        }
+    ],
+    "require": {
+        "roundcube/plugin-installer": ">=0.1.6"
+    }
+}
