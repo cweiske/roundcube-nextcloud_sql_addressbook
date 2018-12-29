@@ -33,6 +33,10 @@ Prerequisites
   - ``oc_cards_properties``
 - Roundcube user login e-mail addresses must equal the username in NextCloud
   (Users log in with `alice@example.org` in both Roundcube and NextCloud)
+- Known to work with:
+  - PHP 7.3.0
+  - NextCloud 14
+  - Roundcube 1.4.0
 
 
 Installation
