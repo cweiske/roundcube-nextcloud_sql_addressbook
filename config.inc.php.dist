@@ -1,0 +1,4 @@
+<?php
+$config['nextcloud_sql_addressbook_dsn'] = 'mysql://user:pass@localhost/dbname';
+$config['nextcloud_sql_addressbook_dbtableprefix'] = 'oc_';
+?>
