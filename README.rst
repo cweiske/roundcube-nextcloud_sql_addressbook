@@ -58,3 +58,10 @@ The address books are only found if the ``principaluri`` in the ``oc_addressbook
 table equals ``principals/users/`` + ``$useremailaddress``.
 
 If you do not see all contacts: Only contacts with an e-mail address are shown.
+
+
+Links
+=====
+- Git repository: https://git.cweiske.de/roundcube-nextcloud_sql_addressbook.git
+- Git mirror: https://github.com/cweiske/roundcube-nextcloud_sql_addressbook
+- Roundcube plugin page: https://plugins.roundcube.net/packages/cweiske/nextcloud_sql_addressbook
