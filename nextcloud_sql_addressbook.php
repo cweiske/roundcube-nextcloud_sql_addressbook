@@ -24,7 +24,12 @@ class nextcloud_sql_addressbook extends rcube_plugin
      * @var string
      */
     protected $prefix = 'oc_';
-    
+
+    /**
+     * Database instance
+     */
+    protected $db;
+
     /**
      * Initialization method, needs to be implemented by the plugin itself
      *
@@ -37,12 +42,12 @@ class nextcloud_sql_addressbook extends rcube_plugin
         $this->add_hook('addressbook_get', [$this, 'addressbook_get']);
 
         $this->rcube = rcube::get_instance();
-        
+
         $this->db = rcube_db::factory(
             $this->rcube->config->get('nextcloud_sql_addressbook_dsn')
         );
         $this->db->set_debug((bool) $this->rcube->config->get('sql_debug'));
-        
+
         $this->prefix = $this->rcube->config->get(
             'nextcloud_sql_addressbook_dbtableprefix', 'oc_'
         );
@@ -131,7 +136,7 @@ class nextcloud_sql_addressbook extends rcube_plugin
         $arguments['instance'] = new nextcloud_sql_addressbook_backend(
             $id, $this->db, $this->prefix
         );
-        
+
         return $arguments;
     }
 }
