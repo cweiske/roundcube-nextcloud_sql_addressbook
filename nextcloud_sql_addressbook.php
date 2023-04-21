@@ -93,6 +93,10 @@ class nextcloud_sql_addressbook extends rcube_plugin
      */
     protected function listAddressbooks()
     {
+        if (!isset($this->rcube->user->data)) {
+            return [];
+        }
+
         $principalUri = 'principals/users/'
             . $this->rcube->user->data['username'];
 
