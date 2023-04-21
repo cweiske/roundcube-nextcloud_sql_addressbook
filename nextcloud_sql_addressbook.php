@@ -129,6 +129,9 @@ class nextcloud_sql_addressbook extends rcube_plugin
      */
     public function addressbook_get($arguments)
     {
+        if (!isset($arguments['id'])) {
+            return $arguments;
+        }
         $parts = explode('_', $arguments['id'], 2);
         if (count($parts) != 2 || $parts[0] != 'nextcloud') {
             return $arguments;
