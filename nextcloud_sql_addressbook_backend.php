@@ -139,7 +139,7 @@ class nextcloud_sql_addressbook_backend extends rcube_addressbook
         $sql = <<<SQL
 SELECT
     p_email.cardid AS id,
-    p_email.value AS email,
+    GROUP_CONCAT(p_email.value SEPARATOR ",") AS email,
     p_name.value AS name
 FROM
     %PREFIX%cards_properties AS p_email
@@ -150,6 +150,7 @@ WHERE
     p_email.addressbookid = ?
     AND p_email.name = "EMAIL"
     %FILTER%
+GROUP BY p_email.cardid
 ORDER BY name, email
 SQL;
 
@@ -305,7 +306,7 @@ SQL;
     protected function _count()
     {
         $sql = <<<SQL
-SELECT COUNT(*) AS cnt
+SELECT COUNT(DISTINCT p_name.cardid) AS cnt
 FROM
     %PREFIX%cards_properties AS p_email
     JOIN %PREFIX%cards_properties AS p_name
@@ -356,7 +357,7 @@ SQL;
         $sql = <<<SQL
 SELECT
     p_email.cardid AS id,
-    p_email.value AS email,
+    GROUP_CONCAT(p_email.value SEPARATOR ",") AS email,
     p_name.value AS name
 FROM
     %PREFIX%cards_properties AS p_email
@@ -367,6 +368,7 @@ WHERE
     p_email.addressbookid = ?
     AND p_email.cardid = ?
     AND p_email.name = "EMAIL"
+GROUP BY p_email.cardid
 ORDER BY name, email
 SQL;
 
@@ -385,7 +387,7 @@ SQL;
             [
                 'ID' => $row['id'],
                 'name'  => $row['name'],
-                'email' => $row['email'],
+                'email' => explode(',', $row['email']),
             ]
         );
 
