@@ -152,7 +152,7 @@ WHERE
     %FILTER%
 ORDER BY name, email
 SQL;
-        
+
         $sql = str_replace(
             '%FILTER%',
             $this->filter ? ' AND ' . $this->filter : '',
@@ -181,7 +181,7 @@ SQL;
         } else {
             $this->result->count = $this->count()->count;
         }
-        
+
         return $this->result;
     }
 
@@ -207,7 +207,7 @@ SQL;
         if (empty($where)) {
             return new rcube_result_set();
         }
-        
+
         $this->set_search_set($where);
         if ($select) {
             return $this->list_records(null, 0, $nocount);
@@ -269,13 +269,13 @@ SQL;
     protected function buildSearchQueryField($field, $value, $mode)
     {
         $sqlField = 'p_' . $field . '.value';
-        
+
         if ($mode & self::SEARCH_STRICT) {
             //exact match
             return $sqlField . ' = ' . $this->db->quote($value);
 
         } else if ($mode & self::SEARCH_PREFIX) {
-            return $this->db->ilike($sqlField, $value . '%');            
+            return $this->db->ilike($sqlField, $value . '%');
         }
 
         return $this->db->ilike($sqlField, '%' . $value . '%');
@@ -316,7 +316,7 @@ WHERE
     AND p_email.name = "EMAIL"
     %FILTER%
 SQL;
-        
+
         $sql = str_replace(
             '%FILTER%',
             $this->filter ? ' AND ' . $this->filter : '',
@@ -329,7 +329,7 @@ SQL;
         $this->cache['count'] = (int) $row['cnt'];
         return $this->cache['count'];
     }
-    
+
     /**
      * Return the last result set
      *
@@ -388,7 +388,7 @@ SQL;
                 'email' => $row['email'],
             ]
         );
-        
+
         return $assoc ? $this->result->first() : $this->result;
     }
 
