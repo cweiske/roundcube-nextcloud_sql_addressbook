@@ -355,7 +355,7 @@ SQL;
     {
         $sql = <<<SQL
 SELECT
-    p_email.cardid AS ID,
+    p_email.cardid AS id,
     p_email.value AS email,
     p_name.value AS name
 FROM
