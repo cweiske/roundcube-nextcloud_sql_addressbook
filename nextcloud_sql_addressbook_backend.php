@@ -14,7 +14,7 @@ class nextcloud_sql_addressbook_backend extends rcube_addressbook
     /**
      * Nextcloud address book ID
      *
-     * @var intger
+     * @var integer
      */
     protected $abId;
 
